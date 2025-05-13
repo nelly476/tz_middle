@@ -18,14 +18,11 @@ export default function Register() {
       navigate('/chat');
     } catch (err) {
       alert('Ошибка регистрации. Попробуйте другое имя пользователя.');
-      console.log(err)
     }
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem('access_token');
-    sessionStorage.removeItem('refresh_token');
-    sessionStorage.removeItem('username');
+    sessionStorage.clear();
     navigate('/login');
   };
 
@@ -50,6 +47,7 @@ export default function Register() {
       <button type="submit">Register</button>
       <p>Уже есть аккаунт? <a href="/login">Войти</a></p>
       <br />
+      <button type="button" onClick={handleLogout}>Выйти из аккаунта</button>
     </form>
   );
 }
